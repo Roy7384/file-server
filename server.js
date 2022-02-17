@@ -7,6 +7,7 @@ server.on('connection', (client) => {
   console.log('client connected');
   client.setEncoding('utf8');
   client.on('data', (data) => {
+    console.log(`client requested ${data}`);
     fs.readFile(`./serverFile/${data}`, 'utf8', (err, data) => {
       client.write(data);
     });
